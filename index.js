@@ -97,7 +97,7 @@ const MIN = 1;
 const MAX = 200;
 
 // Build initial array to be loaded each time the project is loaded
-let current_arr = generateArray(5);
+let current_arr = generateArray(15);
 buildVisualization(current_arr);
 
 
