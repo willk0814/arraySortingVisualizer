@@ -49,25 +49,25 @@ function sortDriver(arr, sortingAlgo) {
 // ---------- Sorting Algorithms ----------
 //  For all of my sorting algorithms it is important that I call the buildVisualizer func
 //  everytime that I move an element
-// Merge Sort
+// ---- Merge Sort ----
 function mergeSort(arr) {
     console.log("Merge");
     return (arr);
 }
 
-// Quick Sort
+// ---- Quick Sort ----
 function quickSort(arr) {
     console.log("Quick");
     return (arr);
 }
 
-// Bubble Sort
+// ---- Bubble Sort ----
 function bubbleSort(arr) {
     console.log("Bubble");
     return (arr);
 }
 
-// Heap Sort
+// ---- Heap Sort ----
 function heapSort(arr) {
     console.log("Heap");
     return (arr);
