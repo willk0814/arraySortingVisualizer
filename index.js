@@ -77,7 +77,7 @@ function heapSort(arr) {
 // ---------- Display Functions ----------
 // constructs the visualization in the DOM
 // inputs = arr (either pre, during, or post sorting). returns = nothing
-function buildVisualization(arr) {
+function buildOutputVisualization(arr) {
     // code to remove exising visualization prior to creating the new one
     let old_output_div = document.getElementById('out_div');
     old_output_div.parentNode.removeChild(old_output_div);
@@ -91,6 +91,19 @@ function buildVisualization(arr) {
     document.getElementById('out_container').appendChild(output_div)
 }
 
+// same build function as above but meant to display the input arr
+function buildInputVisualization(arr) {
+    let old_input_div = document.getElementById('in_div');
+    old_input_div.parentNode.removeChild(old_input_div);
+
+    let input_div = document.createElement('div');
+    input_div.id = 'in_div';
+    let input = document.createElement('p');
+    input.innerHTML = arr;
+    input_div.appendChild(input);
+    document.getElementById('in_container').appendChild(input_div);
+}
+
 
 // Constants for minimum and maximum vals for arr
 const MIN = 1;
@@ -98,7 +111,8 @@ const MAX = 200;
 
 // Build initial array to be loaded each time the project is loaded
 let current_arr = generateArray(15);
-buildVisualization(current_arr);
+buildInputVisualization(current_arr);
+buildOutputVisualization(current_arr);
 
 
 // ---------- Event Listener ----------
@@ -110,9 +124,10 @@ sort_button.addEventListener('click', function() {
     let arrLength = document.getElementById('Length').value;
     // build an array based on the above parameters
     current_arr = generateArray(arrLength);
+    buildInputVisualization(current_arr);
     // call the sortDriver with the above established sortingAlgo and array
     sorted_arr = sortDriver(current_arr, sortingAlgo);
-    buildVisualization(sorted_arr);
+    buildOutputVisualization(sorted_arr);
     
 })
 
