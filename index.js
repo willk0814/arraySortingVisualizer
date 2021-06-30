@@ -127,7 +127,6 @@ sort_button.addEventListener('click', function() {
     buildInputVisualization(current_arr);
     // call the sortDriver with the above established sortingAlgo and array
     sorted_arr = sortDriver(current_arr, sortingAlgo);
-    buildOutputVisualization(sorted_arr);
-    
+    buildOutputVisualization(sorted_arr);  
 })
 
