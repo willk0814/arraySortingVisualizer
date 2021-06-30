@@ -1,4 +1,4 @@
-# arrySortingVisualizer
+# arraySortingVisualizer
 ToDo:
 1. Logic:
     1. Implement Merge Sort
