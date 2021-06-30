@@ -32,7 +32,7 @@ function generateRandomInt() {
 // inputs = unsorted array, type of sorting algo; returns = sorted arr
 function sortDriver(arr, sortingAlgo) {
     if (sortingAlgo == "merge"){
-        return (mergeSort(arr));
+        return (mergeDriver(arr));
     }
     if (sortingAlgo == "bubble"){
         return (bubbleSort(arr));
@@ -50,9 +50,25 @@ function sortDriver(arr, sortingAlgo) {
 //  For all of my sorting algorithms it is important that I call the buildVisualizer func
 //  everytime that I move an element
 // ---- Merge Sort ----
-function mergeSort(arr) {
+function mergeDriver(arr) {
     console.log("Merge");
     return (arr);
+}
+
+function mergeSort(arr, leftStart, rightEnd) {
+    // recurive portion of mergesort function
+    if (leftStart >= rightEnd){
+        return;
+    }
+    var middle = (leftStart + rightEnd) / 2;
+    // Call mergeSort on each of the halves
+    mergeSort(arr, leftStart, middle);
+    mergeSort(arr, middle + 1, rightEnd);
+    mergeHalves(arr, leftStart, rightStart);
+    
+
+
+    mergeSort
 }
 
 // ---- Quick Sort ----
