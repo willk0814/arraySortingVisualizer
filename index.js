@@ -105,9 +105,6 @@ function heapSort(arr) {
     return (arr);
 }
 
-
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
 // ---------- Display Functions ----------
 // constructs the visualization in the DOM
 // inputs = arr (either pre, during, or post sorting). returns = nothing
