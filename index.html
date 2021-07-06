@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Array Sorting Visualization Tool</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"></script>
 </head>
+
 <body>
     <div id="title_div">
         <h1>An Array Sorting Visualization tool</h1>
     </div>
 
     <div id="toolbar">
+        <input type="text" id="Length" placeholder="enter array length">
+        <button name="generate_array" onclick="false" id="generate">Genereate</button>
         <input type="radio" name="sorting_algo" value="merge" id="Merge">
         <label for="Merge">Merge</label>
         <input type="radio" name="sorting_algo" value="bubble" id="Bubble">
@@ -23,8 +28,6 @@
         <label for="Quick">Quick</label>
         <input type="radio" name="sorting_algo" value="heap" id="Heap">
         <label for="Heap">Heap</label>
-        <input type="text" id="Length" placeholder="enter array length">
-        <button name="generate_array" onclick="false" id="generate">Genereate</button>
         <button name="sort" onclick="false" id="sort">Sort</button>
     </div>
 
@@ -32,7 +35,8 @@
         <div id="out_div"></div>
         <canvas id="myChart"></canvas>
     </div>
-   
+
     <script src="index.js"></script>
 </body>
+
 </html>
