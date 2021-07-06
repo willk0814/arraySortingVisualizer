@@ -16,10 +16,10 @@ function generateArray(length) {
 // - generateRandomInt generates a random int between the constants MIN and MAX
 function fillArrHelper(arr) {
     var tmp = generateRandomInt();
-    while (arr.includes(tmp)){
+    while (arr.includes(tmp)) {
         tmp = generateRandomInt();
     }
-    return(tmp);
+    return (tmp);
 }
 
 function generateRandomInt() {
@@ -30,17 +30,16 @@ function generateRandomInt() {
 // sortDriver is called when the user clicks the sort button
 // inputs = unsorted array, type of sorting algo; returns = sorted arr
 function sortDriver(arr, sortingAlgo) {
-    if (sortingAlgo == "merge"){
-        var tmp = arr;
-        return (mergeSort(arr, 0, arr.length, tmp));
+    if (sortingAlgo == "merge") {
+        return (mergeSort(arr));
     }
-    if (sortingAlgo == "bubble"){
+    if (sortingAlgo == "bubble") {
         return (bubbleSort(arr));
     }
-    if (sortingAlgo == "quick"){
+    if (sortingAlgo == "quick") {
         return (quickSort(arr));
     }
-    if (sortingAlgo == "heap"){
+    if (sortingAlgo == "heap") {
         return (heapSort(arr));
     }
 }
@@ -50,41 +49,38 @@ function sortDriver(arr, sortingAlgo) {
 //  For all of my sorting algorithms it is important that I call the buildVisualizer func
 //  everytime that I move an element
 // ---- Merge Sort ----
-function mergeSort(arr, leftStart, rightEnd, tmp) {
-    console.log('Reached Merge Sort');
-    if (leftStart >= rightEnd){
-        return;
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
     }
-    var middle = (leftStart + rightEnd) / 2;
-    // Call mergeSort on each of the halves
-    mergeSort(arr, leftStart, middle);
-    mergeSort(arr, middle + 1, rightEnd);
-    mergeHalves(arr, leftStart, rightEnd);
+    const middle = arr.length / 2;
+    let left = arr.slice(0, middle);
+    let right = arr.slice(middle);
+    console.log('Left Array: ' + left);
+    console.log('Right Array: ' + right);
+    return (merge(mergeSort(left), mergeSort(right)));
 }
 
-function mergeHalves(arr,leftStart, rightEnd, tmp) {
-    console.log('Reached MergeHalves()');
-    var leftEnd = (rightEnd + leftStart) / 2;
-    var rightStart = leftEnd + 1;
-    var size = rightEnd - leftStart + 1;
-
-    var left_index = leftStart;
-    var right_index = rightStart;
-    var tmp_index = leftStart;
-
-    while (left_index <= leftEnd && right_index <= rightEnd){
-        if (arr[left_index] <= arr[right_index]){
-            tmp[tmp_index] = arr[left_index];
-            left_index += 1;
-            console.log("left_index: " + left_index);
-        } else{
-            tmp[tmp_index] = arr[right_index];
-            right_index +=1;
-            console.log("right_index: " + left_index);
+function merge(L, R) {
+    let result_arr = [], indexL = 0, indexR = 0;
+    while (indexL < L.length && indexR < R.length) {
+        if (L[indexL] <= R[indexR]) {
+            result_arr.push(L[indexL]);
+            indexL += 1;
+        }else {
+            result_arr.push(R[indexR]);
+            indexR += 1;
         }
-        tmp_index += 1;
     }
-    // Need to copy array over here
+    while (indexL < L.length) {
+        result_arr.push(L[indexL])
+        indexL += 1;
+    }
+    while (indexR < R.length) {
+        result_arr.push(R[indexR]);
+        indexR += 1;
+    }
+    return result_arr;
 }
 
 // ---- Quick Sort ----
@@ -113,38 +109,36 @@ function render(arr) {
     for (let i = 0; i < arr.length; i++) {
         length_arr[i] = i;
     }
-
-
     // delete the current chart before building the new one
     let current_chart = document.getElementById('myChart');
     current_chart.parentNode.removeChild(current_chart);
 
     let out_container = document.getElementById('out_container')
     let myChart = document.createElement('canvas');
-    myChart.id = 'myChart'; 
+    myChart.id = 'myChart';
 
     let arrChart = new Chart(myChart, {
-        type: "bar", //bar, horizontalbar, pie, line, doughnut, radar, polarArea
+        type: 'bar', //bar, horizontalbar, pie, line, doughnut, radar, polarArea
         data: {
             labels: length_arr,
             datasets: [{
-                label:'',
-                data: arr
+                label: 'This should be hidden',
+                data: arr,
+                backgroundColor: ['turquoise']
             }]
         },
         options: {
-            legend: {
-                display:false,
-                labels: {
-                    display:false
-                }
+            scales: {
+                xAxes: [{ gridLines: { display: false } }],
+                yAxes: [{ gridLines: { display: false } }]
             },
-            tooltips: {
-                enabled:false
-            }
-
+            legend: {
+                display: false,
+                labels: { display: false }
+            },
+            tooltips: { enabled: false }
         }
-    })
+    });
     out_container.appendChild(myChart);
 }
 
@@ -159,17 +153,17 @@ render(current_arr);
 
 // ---------- Event Listener ----------
 var sort_button = document.getElementById('sort');
-sort_button.addEventListener('click', function() {
+sort_button.addEventListener('click', function () {
     // define our sorting algo as whichever radio button is clicked
     let sortingAlgo = document.querySelector('input[name = "sorting_algo"]:checked').value;
-    // define array length from input
-    let arrLength = document.getElementById('Length').value;
-    // build an array based on the above parameters
-    current_arr = generateArray(arrLength);
-    // call the sortDriver with the above established sortingAlgo and array
-    render(current_arr)
-    sorted_arr = sortDriver(current_arr, sortingAlgo);
+    sorted_arr = sortDriver(unsorted_arr, sortingAlgo);
     render(sorted_arr);
-      
+});
+
+let generate_button = document.getElementById('generate');
+generate_button.addEventListener('click', function() {
+    let arr_length = document.getElementById('Length').value;
+    unsorted_arr = generateArray(arr_length);
+    render(unsorted_arr);
 })
 
