@@ -56,8 +56,6 @@ function mergeSort(arr) {
     const middle = arr.length / 2;
     let left = arr.slice(0, middle);
     let right = arr.slice(middle);
-    console.log('Left Array: ' + left);
-    console.log('Right Array: ' + right);
     return (merge(mergeSort(left), mergeSort(right)));
 }
 
@@ -91,7 +89,15 @@ function quickSort(arr) {
 
 // ---- Bubble Sort ----
 function bubbleSort(arr) {
-    console.log("Bubble");
+    for (let i = 0; i < arr.length - 1; i ++){
+        for (let j = 0; j < arr.length - 2; j ++){
+            if (arr[j] > arr[j+1]){
+                let tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
+            }
+        }
+    }
     return (arr);
 }
 
