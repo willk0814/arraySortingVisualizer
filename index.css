@@ -1,3 +1,15 @@
-.title_div h1 {
+h1{
     text-align: center;
+}
+
+#toolbar {
+    text-align: center;
+}
+
+#out_container{
+    text-align: center;
+}
+
+.out_element {
+    width: 2px;
 }
