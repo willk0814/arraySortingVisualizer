@@ -13,10 +13,11 @@
 </head>
 
 <body>
+    
     <div id="toolbar">
-        
-        <input type="text" id="Length" placeholder="enter array length">
-        <button name="generate_array" onclick="false" id="generate">Generate</button>
+        <label for="length_slider" id="slider_label">Drag to select array size:</label>
+        <input type="range" min="2" max="150" value="100" id="length_slider">
+        <label for="length_slider" id="length_label"></label>
         <input type="radio" name="sorting_algo" value="merge" id="Merge">
         <label for="Merge">Merge</label>
         <input type="radio" name="sorting_algo" value="bubble" id="Bubble">

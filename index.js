@@ -157,19 +157,61 @@ let current_arr = generateArray(150);
 render(current_arr);
 
 
-// ---------- Event Listener ----------
+// ---------- Button Listener ----------
 var sort_button = document.getElementById('sort');
 sort_button.addEventListener('click', function () {
     // define our sorting algo as whichever radio button is clicked
     let sortingAlgo = document.querySelector('input[name = "sorting_algo"]:checked').value;
     sorted_arr = sortDriver(unsorted_arr, sortingAlgo);
+    console.log(sorted_arr)
     render(sorted_arr);
 });
 
-let generate_button = document.getElementById('generate');
-generate_button.addEventListener('click', function() {
-    let arr_length = document.getElementById('Length').value;
-    unsorted_arr = generateArray(arr_length);
-    render(unsorted_arr);
-})
 
+// ---------- Slider Code ----------
+let slider = document.getElementById('length_slider');
+let length = slider.value;
+let length_label = document.getElementById('length_label');
+length_label.textContent = length;
+
+
+slider.oninput = function() {
+    length = slider.value;
+    unsorted_arr = generateArray(length);
+    length_label.textContent = length;
+    render(unsorted_arr);
+}
+
+
+// Code I was considering using if I decide to implement the comparator feature as well as a drop down menu
+// div id="toolbar2">
+//         <input type="text" id="length2" placeholder="Enter array length">
+        
+//         <div class="dropdown">
+//             <button class="dropbtn">Algorithm 1</button>
+//             <div class="dropdown_content">
+//                 <p>Merge Sort</p>
+//                 <p>Bubble Sort</p>
+//                 <p>Quick Sort</p>
+//                 <p>Heap Sort</p>
+//             </div>
+//         </div>
+//         <div class="dropdown">
+//             <button class="dropbtn">Algorithm 2</button>
+//             <div class="dropdown_content">
+//                 <p>Merge Sort</p>
+//                 <p>Bubble Sort</p>
+//                 <p>Quick Sort</p>
+//                 <p>Heap Sort</p>
+//             </div>
+//         </div>
+//         <div class="dropdown">
+//             <button class="dropbtn">Algorithm 3</button>
+//             <div class="dropdown_content">
+//                 <p>Merge Sort</p>
+//                 <p>Bubble Sort</p>
+//                 <p>Quick Sort</p>
+//                 <p>Heap Sort</p>
+//             </div>
+//         </div>
+//     </div>
